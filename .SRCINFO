@@ -1,6 +1,6 @@
 pkgbase = minibook-support-git
 	pkgdesc = Software for CHUWI MiniBook (8-inch) / MiniBook X (10-inch) running Linux
-	pkgver = 1.1.1.r0.ff4e68e
+	pkgver = 1.1.2.r0.281be79
 	pkgrel = 1
 	url = https://github.com/petitstrawberry/minibook-support
 	install = minibook-support.install
