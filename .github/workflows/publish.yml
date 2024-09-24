@@ -1,9 +1,8 @@
 name: Publish
 
 on:
-  push:
-    branches:
-      - master
+  repository_dispatch:
+    types: [publish_to_aur]
 
 jobs:
   aur:
@@ -14,7 +13,6 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Publish AUR package
-        if: "contains(github.event.head_commit.message, 'Bump version to ')"
         uses: KSXGitHub/github-actions-deploy-aur@v2.5.0
         with:
           pkgname: minibook-support-git
@@ -23,5 +21,5 @@ jobs:
           commit_username: ${{ secrets.AUR_USERNAME }}
           commit_email: ${{ secrets.AUR_EMAIL }}
           ssh_private_key: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
-          commit_message: ${{ github.event.head_commit.message }}
+          commit_message: Bump version to ${{ github.event.client_payload.version }}
           ssh_keyscan_types: rsa,ecdsa,ed25519
