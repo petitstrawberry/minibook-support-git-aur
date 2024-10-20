@@ -11,8 +11,13 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v3
-      - name: Build and validate package
-        uses: petitstrawberry/archlinux-package-action@main
+      - name: Makepkg Build and Check
+        id: makepkg
+        uses: edlanglois/pkgbuild-action@v1
+      - name: Print Package Files
+        run: |
+          echo "Successfully created the following package archive"
+          echo "Package: ${{ steps.makepkg.outputs.pkgfile0 }}"
       - name: Publish AUR package
         uses: KSXGitHub/github-actions-deploy-aur@v2.5.0
         with:
