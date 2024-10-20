@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build and validate package
-        uses: heyhusen/archlinux-package-action@v2
+        uses: petitstrawberry/archlinux-package-action@main
       - name: Publish AUR package
         uses: KSXGitHub/github-actions-deploy-aur@v2.5.0
         with:
