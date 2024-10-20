@@ -11,7 +11,8 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v3
-
+      - name: Generate PKGBUILD
+        run: makepkg -s
       - name: Publish AUR package
         uses: KSXGitHub/github-actions-deploy-aur@v2.5.0
         with:
